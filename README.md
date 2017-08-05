@@ -1,5 +1,7 @@
 # webapp-template
 
+[![Build Status](https://travis-ci.org/4e6/webapp-template-hs.svg?branch=master)](https://travis-ci.org/4e6/webapp-template-hs)
+
 Template for a web application.
 
 ## Build
