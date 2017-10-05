@@ -7,13 +7,17 @@ import Network.Wai.Handler.Warp (run)
 import Servant
 
 
-type API = HealthAPI
+type API =
+  HealthAPI :<|>
+  ReaderAPI
 
 api :: Proxy API
 api = Proxy
 
 server :: Server API
-server = pure handleHealthRequest
+server =
+  pure handleHealthRequest :<|>
+  pure handleReaderRequest
 
 app :: Application
 app = serve api server
