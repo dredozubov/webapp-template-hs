@@ -4,7 +4,6 @@ import Data.Payload
 import Data.Proxy
 import EtherCompat
 import Handler
-import Network.Wai.Handler.Warp (run)
 import Servant as S
 
 
@@ -41,6 +40,3 @@ server = enter appToHandler mainH
 
 app :: Application
 app = serve api server
-
-launch :: IO ()
-launch = run 8080 app

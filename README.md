@@ -4,10 +4,20 @@
 
 Template for a web application.
 
-## Build
+## Build with GHC 7.10.3
 
 ``` bash
-stack build
+$ STACK_YAML=ghc7.yaml stack build
+
+$ grep ticks .stack-work/dist/x86_64-linux-nopie/Cabal-1.22.5.0/build/src/Runner.dump-simpl-stats
+Total ticks:     2534
+
+```
+
+## Build with GHC 8.2.1
+
+``` bash
+$ STACK_YAML=ghc8.yaml stack build
 ```
 
 Result in error:
