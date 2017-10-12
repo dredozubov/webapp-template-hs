@@ -16,119 +16,21 @@ library
   exposed-modules:     Data.Payload
                      , Ether
                      , EtherCompat
-                     , Handler
                      , Runner
+                     , Servant
   build-depends:       base >= 4.7 && < 5
                      , hset == 2.2.0
-                     , servant-server == 0.11
                      , mtl == 2.2.1
-                     -- freeze inderect deps
-                     , Cabal                   == 2.0.0.2
-                     , aeson                   == 1.2.2.0
-                     , aeson-pretty            == 0.8.5
-                     , ansi-terminal           == 0.6.3.1
-                     , ansi-wl-pprint          == 0.6.8.1
-                     , appar                   == 0.1.4
-                     , array                   == 0.5.2.0
-                     , async                   == 2.1.1.1
-                     , attoparsec              == 0.13.2.0
-                     , attoparsec-iso8601      == 1.0.0.0
-                     , auto-update             == 0.1.4
-                     , base-compat             == 0.9.3
-                     , base64-bytestring       == 1.0.0.1
-                     , basement                == 0.0.2
-                     , binary                  == 0.8.5.1
-                     , blaze-builder           == 0.4.0.2
-                     , blaze-html              == 0.9.0.1
-                     , blaze-markup            == 0.8.0.0
-                     , byteorder               == 1.0.4
-                     , bytestring              == 0.10.8.2
-                     , bytestring-builder      == 0.10.8.1.0
-                     , cabal-doctest           == 1.0.2
-                     , case-insensitive        == 1.2.0.10
-                     , cmdargs                 == 0.10.17
-                     , containers              == 0.5.10.2
-                     , cookie                  == 0.4.2.1
-                     , cryptonite              == 0.24
-                     , data-default-class      == 0.1.2.0
-                     , deepseq                 == 1.4.3.0
-                     , directory               == 1.3.0.2
-                     , dlist                   == 0.8.0.3
-                     , easy-file               == 0.2.1
-                     , exceptions              == 0.8.3
-                     , fast-logger             == 2.4.10
-                     , file-embed              == 0.0.10.*
-                     , filepath                == 1.4.1.2
-                     , foundation              == 0.0.15
-                     , ghc-boot-th             == 8.2.1
-                     , ghc-prim                == 0.5.1.0
-                     , hashable                == 1.2.6.1
-                     , hex                     == 0.1.2
-                     , http-api-data           == 0.3.7.1
-                     , http-date               == 0.0.6.1
-                     , http-media              == 0.7.1.1
-                     , http-types              == 0.9.1
-                     , http2                   == 1.6.3
-                     , integer-gmp             == 1.0.1.0
-                     , integer-logarithms      == 1.0.2
-                     , iproute                 == 1.7.1
-                     , lifted-base             == 0.2.3.11
-                     , memory                  == 0.14.8
-                     , mime-types              == 0.1.0.7
-                     , mmorph                  == 1.1.0
-                     , monad-control           == 1.0.2.2
-                     , natural-transformation  == 0.4
-                     , network                 == 2.6.3.2
-                     , network-uri             == 2.6.1.0
-                     , old-locale              == 1.0.0.7
-                     , old-time                == 1.1.0.3
-                     , optparse-applicative    == 0.14.0.0
-                     , parsec                  == 3.1.11
-                     , pretty                  == 1.1.3.3
-                     , primitive               == 0.6.2.0
-                     , process                 == 1.6.1.0
-                     , psqueues                == 0.2.3.0
-                     , random                  == 1.1
-                     , resourcet               == 1.1.9
-                     , rts                     == 1.0
-                     , safe                    == 0.3.15
-                     , scientific              == 0.3.5.2
-                     , servant                 == 0.11
-                     , simple-sendfile         == 0.2.25
-                     , split                   == 0.2.3.2
-                     , stm                     == 2.4.4.1
-                     , streaming-commons       == 0.1.18
-                     , string-conversions      == 0.4.0.1
-                     , stringsearch            == 0.3.6.6
-                     , system-filepath         == 0.4.13.4
-                     , tagged                  == 0.8.5
-                     , template-haskell        == 2.12.0.0
-                     , text                    == 1.2.2.2
-                     , th-lift                 == 0.7.7
-                     , th-lift-instances       == 0.1.11
-                     , time                    == 1.8.0.2
-                     , time-locale-compat      == 0.1.1.3
-                     , transformers            == 0.5.2.0
-                     , transformers-base       == 0.4.4
-                     , transformers-compat     == 0.5.1.4
-                     , type-fun                == 0.1.1
-                     , unix                    == 2.7.2.2
-                     , unix-compat             == 0.4.3.1
-                     , unix-time               == 0.3.7
-                     , unordered-containers    == 0.2.8.0
-                     , uri-bytestring          == 0.2.3.3
-                     , utf8-string             == 1.0.1.1
-                     , uuid-types              == 1.0.3
-                     , vault                   == 0.3.0.7
-                     , vector                  == 0.12.0.1
-                     , void                    == 0.7.2
-                     , wai                     == 3.2.1.1
-                     , wai-app-static          == 3.1.6.1
-                     , wai-extra               == 3.0.20.0
-                     , wai-logger              == 2.3.0
-                     , warp                    == 3.2.13
-                     , word8                   == 0.1.3
-                     , zlib                    == 0.6.1.2
+                     , natural-transformation == 0.4
+                     , tagged == 0.8.5
+                     -- freeze indirect deps
+                     , array               == 0.5.2.0
+                     , deepseq             == 1.4.3.0
+                     , pretty              == 1.1.3.3
+                     , transformers        == 0.5.2.0
+                     , transformers-compat == 0.5.1.4
+                     , type-fun            == 0.1.1
+
 
   default-extensions:  ConstraintKinds
                      , DataKinds
