@@ -7,7 +7,6 @@ module Servant where
 
 import Control.Monad.Except (ExceptT)
 import Control.Natural ((:~>)(..))
-import Data.Tagged
 import GHC.TypeLits
 
 
@@ -50,6 +49,11 @@ instance {-# OVERLAPPABLE #-}
   type ServerT (Verb method status ctypes a) m = m a
 
 -- Enter
+
+newtype Tagged s b = Tagged { unTagged :: b }
+
+retag :: Tagged s b -> Tagged t b
+retag = Tagged . unTagged
 
 -- | Helper type family to state the 'Enter' symmetry.
 type family Entered m n api where
