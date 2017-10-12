@@ -39,3 +39,14 @@ ghc: panic! (the 'impossible' happened)
 
 Please report this as a GHC bug:  http://www.haskell.org/ghc/reportabug
 ```
+
+## Build with Cabal
+
+``` bash
+$ stack install cabal-install
+$ cabal --version
+cabal-install version 2.0.0.0
+$ cabal update
+$ cabal sandbox init
+$ cabal --require-sandbox install
+```
