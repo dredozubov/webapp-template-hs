@@ -39,6 +39,16 @@ type AppPayload =
    , Payload 8
    , Payload 9
    , Payload 10
+   , Payload 11
+   , Payload 12
+   , Payload 13
+   , Payload 14
+   , Payload 15
+   , Payload 16
+   , Payload 17
+   , Payload 18
+   , Payload 19
+   , Payload 20
    , PayloadX
    ]
 

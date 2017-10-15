@@ -52,3 +52,10 @@ type HModifiable els1 els2 e1 e2 = HModify els1 els2 e1 e2 (IndexOf e1 els1)
 -- | Helper type infering that hset 'els' contains element of type 'e'
 -- and can be modified
 type HMonoModifiable els e = HModifiable els els e e
+
+-- | Like 'hmodify' but do not change the hset's type
+hMonoModify :: HMonoModifiable els e
+            => (e -> e)
+            -> HSet els
+            -> HSet els
+hMonoModify f h = hmodify f h
