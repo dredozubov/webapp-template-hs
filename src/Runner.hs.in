@@ -1,0 +1,83 @@
+{-# LANGUAGE CPP #-}
+module Runner where
+
+import Data.Payload
+import Data.Proxy
+import EtherCompat as EC
+import Servant as S
+
+import Control.Natural
+
+
+type API =
+  Reader1API :<|> Reader2API
+
+api :: Proxy API
+api = Proxy
+
+type Reader1API = Get '[JSON] Int
+type Reader2API = Put '[JSON] Int
+
+handleReaderRequest :: (MonadReaders '[PayloadX] m) => m Int
+handleReaderRequest = do
+  PayloadX v <- EC.ask
+  return v
+
+handleReaderRequest' :: (MonadReader PayloadX m) => m Int
+handleReaderRequest' = do
+  PayloadX v <- EC.ask
+  return v
+
+
+type AppPayload =
+  '[ 
+#if N > 0
+     Payload 1
+#if N > 1
+   , Payload 2
+#if N > 2
+   , Payload 3
+#if N > 3
+   , Payload 4
+#if N > 4
+   , Payload 5
+#if N > 5
+   , Payload 6
+#if N > 6
+   , Payload 7
+   --, Payload 8
+   --, Payload 9
+   --, Payload 10
+   --, Payload 11
+   --, Payload 12
+   --, Payload 13
+   --, Payload 14
+   --, Payload 15
+   --, Payload 16
+   --, Payload 17
+   --, Payload 18
+   --, Payload 19
+   --, Payload 20
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+   , PayloadX
+   ]
+
+type AppServer = HReaderT AppPayload IO
+
+--appToHandler :: AppServer :~> S.Handler
+--appToHandler = undefined
+--
+--server :: Server API
+--server = enter appToHandler mainH
+--  where
+--    mainH =
+--      handleReaderRequest' :<|> handleReaderRequest
+
+mainH :: AppServer Int :<|> AppServer Int
+mainH = handleReaderRequest' :<|> handleReaderRequest
