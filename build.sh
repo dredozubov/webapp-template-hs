@@ -1,7 +1,10 @@
 #!/bin/bash -e
 
-n=$1
-shift
+if [ -z "$n" ]; then
+	echo "Please set \$n"
+	exit 1
+fi
+
 rm -f src/Runner.o src/Runner.hi
 cpp -DN=$n src/Runner.hs.in > src/Runner.hs
 mkdir -p dump-$n
