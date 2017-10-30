@@ -45,7 +45,8 @@ type AppPayload =
    , Payload 6
 #if N > 6
    , Payload 7
-   --, Payload 8
+#if N > 7
+   , Payload 8
    --, Payload 9
    --, Payload 10
    --, Payload 11
@@ -58,6 +59,7 @@ type AppPayload =
    --, Payload 18
    --, Payload 19
    --, Payload 20
+#endif
 #endif
 #endif
 #endif
